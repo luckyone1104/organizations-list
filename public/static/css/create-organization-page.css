@@ -1,0 +1,87 @@
+.create-organization-page__form {
+  width: 535.2px;
+  padding: 17.6px;
+  background-color: #fff;
+}
+
+.create-organization-page__form > *:nth-child(2n) {
+  margin-bottom: 12px;
+}
+
+.create-organization-page__form > *:last-child {
+  margin-bottom: 0;
+}
+
+.create-organization-page__form > label {
+  margin-bottom: 6px;
+  color: #aaa;
+}
+
+.create-organization-page__form input::placeholder {
+  color: #bbb;
+}
+
+.create-organization-page__input,
+.create-organization-page__select,
+.create-organization-page__date-input {
+  width: 500px;
+}
+
+.create-organization-page__select {
+}
+
+.create-organization-page__date-input {
+}
+
+.create-organization-page__buttons-container {
+  display: flex;
+  justify-content: space-between;
+
+  width: 535.2px;
+  padding-top: 32px;
+}
+
+.create-organization-page__save-button {
+  padding-left: 32px;
+  padding-right: 32px;
+
+  background-color: #5bb85d;
+  border-color: #5ab15c;
+
+  box-shadow: -1px -6px 9px 2px rgb(99 99 99 / 20%) inset;
+}
+
+.create-organization-page__save-button:hover {
+  background-color: #59a55a;
+  border-color: #5aa05c;
+}
+
+.create-organization-page__save-button:active {
+  background-color: #5ba05c;
+  border-color: #58975a;
+}
+
+.create-organization-page__save-button:focus {
+  background-color: #5ba05c;
+  border-color: #58975a;
+}
+
+.create-organization-page__cancel-button {
+  padding-left: 24px;
+  padding-right: 24px;
+
+  background-color: #2bb5e8;
+  border-color: #2bb1e2;
+}
+
+.create-organization-page__cancel-button:hover {
+  background-color: #25a8db;
+  border-color: #25a3d4;
+}
+
+.create-organization-page__cancel-button:active,
+.create-organization-page__cancel-button:focus {
+  background-color: #2aa9db;
+  border-color: #2ca7d8;
+}
+
