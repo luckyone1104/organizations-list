@@ -10,9 +10,6 @@ export default class OrganizationsController {
   }
 
   bindEvents() {
-    window.addEventListener('resize', () => {
-      console.log(1);
-    })
     this.view.DOMElements.sortingSelect.addEventListener('change', this.sortOrganizations.bind(this));
 
     this.view.DOMElements.searchInput.addEventListener('input', this.searchOrganizations.bind(this));
