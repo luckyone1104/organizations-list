@@ -1,10 +1,5 @@
 import html from './html.js'
-
-import OrganizationsView from '../views/OrganizationsView.js'
-import OrganizationConstructorView from '../views/OrganizationConstructorView.js'
-
-import OrganizationsController from '../controllers/OrganizationsController.js'
-import OrganizationConstructorController from '../controllers/OrganizationConstructorController.js'
+import routeConfig from './routeConfig.js'
 
 export default class Router {
   constructor() {
@@ -12,33 +7,12 @@ export default class Router {
   }
 
   init(model) {
-    this.model = model;
+    this.routeConfig = new routeConfig(model);
     this.route();
   }
 
   route() {
-    const routes = [
-      { 
-        path: '/',
-        init: () => {
-          const view = new OrganizationsView();
-          const controller = new OrganizationsController(view, this.model);
-
-          controller.init();
-        }
-      },
-      { 
-        path: '/organization-constructor/:action/:id',
-        init: (params) => {
-          const view = new OrganizationConstructorView();
-          const controller = new OrganizationConstructorController(view, this.model);
-
-          controller.init(params);
-        }
-      }
-    ];
-
-    const potentialMatches = routes.map(route => {
+    const potentialMatches = this.routeConfig.routes.map(route => {
       return {
         route: route,
         result: location.pathname.match(this.pathToRegex(route.path))
@@ -55,7 +29,7 @@ export default class Router {
       }
     }
 
-    this.render(match.route.path);
+    this.render(match.route);
     match.route.init(this.getParams(match));
   }
 
@@ -77,22 +51,22 @@ export default class Router {
     this.route();
   }
 
-  render(path) {
-    this.setTitle(path);
-    this.wrapper.innerHTML = this.getHtml(path);
+  render(route) {
+    if (!this.getHtml(route.path)) {
+      this.navigateTo('/');
+      this.route();
+      return null;
+    }
+
+    this.setTitle(route.title);
+    this.wrapper.innerHTML = this.getHtml(route.path);
   }
 
   getHtml(path) {
     return html[path];
   }
 
-  setTitle(path) {
-    let title = '';
-
-    switch (path) {
-      case '/' : title = 'Organizations'; break;
-      case '/organization-constructor/:action/:id' : title = 'Organization Constructor'; break;
-    }
+  setTitle(title) {
     document.title = title;
   }
 }

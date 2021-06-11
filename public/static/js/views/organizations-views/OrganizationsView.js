@@ -1,4 +1,4 @@
-import View from './View.js'
+import View from '../View.js'
 
 export default class OrganizationsView extends View {
   constructor() {
@@ -10,6 +10,7 @@ export default class OrganizationsView extends View {
     this.getDOMElements();
     this.buildView();
     this.getBuiltDOMElements();
+    this.buildHrefs(); 
   }
 
   getDOMElements() {
@@ -19,14 +20,19 @@ export default class OrganizationsView extends View {
       sortingSelect            : document.querySelector('.organizations-page__select'),
       searchInput              : document.querySelector('.organizations-page__search-input'),
       createOrganizationButton : document.querySelector('.organizations-page__button'),
+      menu                     : document.querySelector('.aside-menu__menu')
     };
     this.getRouterPageTitle();
   }
 
   buildView() {
+    this.buildMenu();
     this.buildRouterTitle('Организации');
-    this.buildHrefs(); 
     (this.organizationList.length === 0) ? this.buildEmptyView() : this.buildList();
+  }
+
+  buildMenu() {
+    this.DOMElements.menu.innerHTML = '';
   }
 
   buildEmptyView() {
@@ -63,7 +69,7 @@ export default class OrganizationsView extends View {
 
   buildOrganizations(sortingMethod) {
     this.organizationList.sort(sortingMethod).forEach(organization => {
-      let status =  organization.status === 'true' ? 'Активно' : 'Не активно';
+      let status =  organization.status  ? 'Активно' : 'Не активно';
       let date = this.formatDateForTable(organization.creationDate.seconds);
       const html = 
         `<div class="organizations-page__table-row organization" id="${organization.fireId}">
@@ -74,8 +80,8 @@ export default class OrganizationsView extends View {
           <div class="organizations-page__table-column">${date}</div>
           <div class="organizations-page__table-column">${status}</div>
           <div class="organizations-page__table-column organizations-page__table-column_images-container">
-            <img class="organizations-page__edit-button" src="/static/images/edit.svg" alt="" height="18px" data-link="/organization-constructor/edit/${organization.id}">
-            <img class="organizations-page__delete-button" src="/static/images/delete.svg" alt="" height="18px">
+            <img class="organizations-page__edit-button svg-scalable-icon" src="/static/images/edit.svg" alt="" height="18px" data-link="/organization-constructor/edit/${organization.id}">
+            <img class="organizations-page__delete-button svg-scalable-icon" src="/static/images/delete.svg" alt="" height="18px">
           </div>
         </div>`
       this.DOMElements.tableWrapper.insertAdjacentHTML('beforeEnd', html);
@@ -92,13 +98,15 @@ export default class OrganizationsView extends View {
     return `${day}.${month}.${year}`;
   }
 
-  buildHrefs() {
-    this.DOMElements.createOrganizationButton.setAttribute('data-link', `/organization-constructor/create/${this.organizationList.length + 1 || 1}`);
-  }
-
   getBuiltDOMElements() {
+    this.getEditButtons();
     this.getDeleteButtons();
     this.getOrganizationNames();
+    // this.getOrganizationRows();
+  }
+
+  getEditButtons() {
+    this.DOMElements.editButtons = document.querySelectorAll('.organizations-page__edit-button');
   }
 
   getDeleteButtons() {
@@ -107,6 +115,14 @@ export default class OrganizationsView extends View {
 
   getOrganizationNames() {
     this.DOMElements.organizationNames = document.querySelectorAll('.organization-name');
+  }
+
+  // getOrganizationRows() {
+  //   this.DOMElements.organizationRows = document.querySelectorAll('.organization')
+  // }
+
+  buildHrefs() {
+    this.DOMElements.createOrganizationButton.setAttribute('data-link', `/organization-constructor/create/${this.organizationList.length + 1 || 1}`);
   }
 
   searchOrganizations(inputValue) {
@@ -130,6 +146,15 @@ export default class OrganizationsView extends View {
       </div>`;
 
     container.insertAdjacentHTML('beforeend', spinner);
+  }
+
+  clickOnTable(e) {
+    if (e.target.classList.contains('organizations-page__delete-button')) {
+      window.app.observer.callEvent('clickOnDeleteOrganizationBtn', e.target);
+    } else if (e.target.classList.contains('organization') || e.target.parentNode.classList.contains('organization')) {
+      const id = +e.target.firstElementChild?.textContent || +e.target.parentNode.firstElementChild.textContent;
+      window.app.observer.callEvent('navigateTo', `/organization-info/${id}`)
+    }
   }
 
 }

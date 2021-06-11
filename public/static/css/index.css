@@ -11,6 +11,20 @@ html {
   text-decoration: none;
 }
 
+.default-cursor {
+  cursor: default;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .page-wrapper {
   height: 100vh;
   max-height: 100vh;
@@ -117,6 +131,11 @@ html {
   display: flex;
   align-items: center;
   padding: 0 33px;
+}
+
+.page-wrapper__home-route:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .router__current-page {

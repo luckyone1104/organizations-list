@@ -6,11 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/blocks/payment-modal/autocomplete/autoComplete.02.css">
 
   <link rel="stylesheet" href="/static/css/null.css">
+  <link rel="stylesheet" href="/static/css/blocks/buttons.css">
+
   <link rel="stylesheet" href="/static/css/index.css">
   <link rel="stylesheet" href="/static/css/organizations-page.css">
   <link rel="stylesheet" href="/static/css/create-organization-page.css">
+  <link rel="stylesheet" href="/static/css/organization-info.css">
+  
+  <link rel="stylesheet" href="/static/css/blocks/payment-modal/payment-modal.css">
 
   <title></title>
 </head>
@@ -43,8 +49,9 @@
       <img src="/static/images/person-icon.svg" alt="" height="30.4px" width="30.4px">
     </header>
 
-    <div class="page-wrapper__router router">
-      <span>Главная&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+    <div class="page-wrapper__router router default-cursor noselect">
+      <span class="page-wrapper__home-route" data-link="/">Главная</span>
+      <span>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;</span>
       <span class="router__current-page">Организации</span>
     </div>
 
@@ -61,7 +68,9 @@
   
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="/static/js/utils/autoComplete.js"></script>
   <script type="module" src="/static/js/index.js"></script>
 </body>
 </html>

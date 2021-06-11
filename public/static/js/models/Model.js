@@ -18,7 +18,7 @@ export default class Model {
   }
 
   async init() {
-    firebase.initializeApp(this.firebaseConfig);
+    this.initFirebase();
     this.db = firebase.firestore();
 
     await this.getData();
@@ -26,10 +26,15 @@ export default class Model {
     this.ready = true;
   }
 
+  initFirebase() {
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(this.firebaseConfig);
+    }
+  }
+
   async getData() {
     this.organizationList = await this.getOrganizationList();
-    this.organizationList.sort(this.sortByAscendingId);
-    if (!this.areIdsOrdered(this.organizationList)) this.orderIds(this.organizationList);
+    this.modifyData();
   }
 
   async getOrganizationList() {
@@ -39,6 +44,11 @@ export default class Model {
       modifiedDoc.fireId = doc.id;
       return modifiedDoc;
     });
+  }
+
+  modifyData() {
+    this.organizationList.sort(this.sortByAscendingId);
+    if (!this.areIdsOrdered(this.organizationList)) this.orderIds(this.organizationList);
   }
 
   async getOrganization(name) {

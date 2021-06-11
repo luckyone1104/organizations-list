@@ -21,6 +21,13 @@ export default class Controller {
 
   bindSubscribers() {
     window.app.observer.subscribeEvent('navigateTo', href => { this.router.navigateTo(href) })
+
+    window.app.observer.subscribeEvent('purchaseOrganization', async organizationId => {
+      const organization = this.model.organizationList.find(organization => organization.id === +organizationId);
+      const fireId = organization.fireId;
+      await this.model.updateOrganization(fireId, { isPurchased : true });
+      await this.model.getData();
+    })
   }
 
   navigateTo(e) {

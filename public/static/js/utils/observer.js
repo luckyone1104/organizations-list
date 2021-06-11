@@ -2,15 +2,13 @@ export default {
   subscribers : {},
 
   subscribeEvent(name, subscriber) {
-    this.subscribers[name] = this.subscribers[name] || [];
-
     if (typeof subscriber === 'function') {
-      this.subscribers[name].push(subscriber);
+      this.subscribers[name] = subscriber;
     }
   },
 
   callEvent(name, data) {
     if (!this.subscribers[name]) return null;
-    this.subscribers[name].forEach(subscriber => subscriber(data));
+    this.subscribers[name](data);
   }
 };

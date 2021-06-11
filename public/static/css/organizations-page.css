@@ -58,7 +58,7 @@
 .organizations-page__table {
   border: 1px solid #ced4da;
   border-bottom: none;
-  border-radius: .25rem;
+  border-radius: 0.25rem 0.25rem 0 0;
   background-color: #fff;
   margin-top: 32px;
 }
@@ -74,14 +74,19 @@
   border-bottom: 1px solid #ced4da;
 }
 
-/* .organizations-page__table-row:last-child {
-  border-bottom: none;
-} */
+.organization {
+  transition: background-color 0.12s ease-in-out;
+}
 
-._table-header {
+.organization:hover {
+  cursor: pointer;
   background-color: #f9f9f9;
 }
 
+._table-header {
+  background-color: #f9f9f9;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
 
 .organizations-page__table-column {
   display: flex;
@@ -96,6 +101,18 @@
 .organizations-page__edit-button:hover,
 .organizations-page__delete-button:hover {
   cursor: pointer;
+}
+
+.svg-scalable-icon {
+  transform: scale(1);
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.svg-scalable-icon:hover {
+  transform: scale(1.16);
+
+  transition: transform 0.16s ease-in-out;
 }
 
 @media (max-width: 1150px) {

@@ -1,4 +1,4 @@
-import OrganizationConstructorView from '../OrganizationConstructorView.js'
+import OrganizationConstructorView from '../organization-constructor-views/OrganizationConstructorView.js'
 
 export default class EditingModeView extends OrganizationConstructorView {
   constructor() {

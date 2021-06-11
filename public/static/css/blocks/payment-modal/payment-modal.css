@@ -1,0 +1,730 @@
+/* FONTS
+================================================================================================================================================= */
+@font-face {
+  font-family: 'Roboto'; 
+  src: url('fonts/Roboto/Roboto-Light.ttf') format("truetype"); 
+  font-style: normal; 
+  font-weight: 300; 
+}
+
+@font-face {
+  font-family: 'Roboto'; 
+  src: url('fonts/Roboto/Roboto-Regular.ttf') format("truetype"); 
+  font-style: normal; 
+  font-weight: 400; 
+}
+
+@font-face {
+  font-family: 'Roboto'; 
+  src: url('fonts/Roboto/Roboto-Medium.ttf') format("truetype"); 
+  font-style: normal; 
+  font-weight: 500; 
+  }
+  
+/* VARIABLES
+================================================================================================================================================= */
+  
+:root {
+  --menu-height: 70px; 
+  --modal-bg: #eaeaeb;
+}
+  
+/* MODAL
+================================================================================================================================================= */
+ 
+.payment-modal__wrapper {
+  opacity: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: saturate(100%) blur(10px);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity ease-in-out 0.2s;
+}
+
+.payment-modal {
+  opacity: 0;
+  transform: scale(0.1);
+  background-color: #f4f5f7;
+  height: 90%;
+  width: 87%;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+
+  -webkit-box-shadow: 0px 0px 20px -6px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px 20px -6px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 20px -6px rgba(34, 60, 80, 0.2);
+
+  transition: all ease-in-out 0.2s;
+}
+
+.payment-modal__tab-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.payment-modal__loader-wrapper {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MENU
+================================================================================================================================================= */
+  
+.payment-modal__menu-wrapper {
+  position: relative;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.payment-modal__menu {
+  position: relative;
+  height: var(--menu-height);
+  color: #4E8EB2;
+
+  font-family: 'Roboto';
+  font-weight: 500; 
+  font-size: 18px;
+
+  display: flex;
+}
+
+.payment-modal__menu::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 3px solid var(--modal-bg);
+}
+
+.payment-modal__menu-element {
+  border: none;
+  text-decoration: none;
+  color: #B0C7CF;
+  background-color: #f4f5f7;
+  width: 33.3333%;
+  cursor: pointer;
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  text-align: center;
+  letter-spacing: 1.2px;
+  line-height: var(--menu-height);
+
+  transition: color ease-in-out 0.2s;
+}
+.payment-modal__menu-element:hover {
+  color: #4E8EB2;
+}
+.menu-element_disabled:hover,
+.payment-modal__menu-element[disabled] {
+  color: #B0C7CF;
+  cursor: default;
+}
+
+.payment-modal__menu-element_selected {
+  color: #4E8EB2;
+}
+
+.payment-modal__menu-selected-line-wrapper {
+  position: absolute;
+  height: 3px;
+  width: 33.333%;
+  bottom: 0;
+  left: 0%;
+
+  transition: left 0.2s ease-in-out;
+}
+
+.payment-modal__menu-selected-line {
+  height: 100%;
+  width: 82%;
+  border-radius: 3px;
+  margin: 0 auto;
+  background-color: #4E8EB2;;
+}
+
+/* SHIPPING DETAILS
+================================================================================================================================================= */
+ 
+.payment-modal__shipping-details {
+  height: 100%;
+  width: 100%;
+  padding: 3vh 2.5vw;
+
+  display: grid;
+ 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 75px 393px auto;
+  grid-template-areas:
+  ".          right-column"
+  "left-colum right-column"
+  ".          right-column";
+}
+
+.shipping-details__left-column {
+  grid-area: left-colum;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.shipping-details__left-image {
+  height: 100%;
+  padding-right: 5vw;
+}
+
+.shipping-details__right-column {
+  grid-area: right-column;
+
+  font-family: "Roboto";
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shipping-details__input-info {
+  display: grid;
+  grid-template-rows: 75px 393px auto;
+  grid-template-areas: 
+  "title"
+  "inputs"
+  "buttons";
+}
+
+.shipping-details__title-wrapper {
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-details__title {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.shipping-details__inputs-wrapper {
+  grid-area: inputs;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shipping-details__input-form {
+  position: relative;
+  color: #d3d3d3;
+  font-size: 20px;
+}
+
+.shipping-details__label {
+  display: block;
+  /* margin-top: 4px; */
+}
+
+.shipping-details__input-info input,
+.shipping-details__select-country {
+  height: 52px;
+  border: none;
+  background-color: #f4f5f7;
+  outline: none;
+  position: relative;
+  width: 100%;
+  font-size: 26px;
+  line-height: 44px;
+}
+
+.shipping-details__input-info input::placeholder,
+.shipping-details__select-placeholder {
+  line-height: 44px;
+  font-size: 26px;
+  color: #bbbbbb;
+}
+
+.shipping-details__select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.shipping-details__select-placeholder {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shipping-details__bottom-line {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  border-bottom: 2px solid #dfdfdf;
+
+  transition: border-bottom-color 0.2s ease-in-out;
+}
+
+.shipping-details__input-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shipping-details__house-number-wrapper,
+.shipping-details__apartment-number--wrapper {
+  width: 45%;
+}
+
+.shipping-details__buttons-wrapper {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-details__next-page-button {
+  margin-top: 32px;
+}
+
+/* PAYMENT DETAILS
+================================================================================================================================================= */
+ 
+.payment-modal__payment-details {
+  height: 100%;
+  width: 100%;
+  padding: 10vh 2.5vw;
+
+  display: grid;
+ 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 75px 295px auto;
+  grid-template-areas:
+  ".          right-column"
+  "left-colum right-column"
+  ".          right-column";
+}
+
+.payment-details__left-column {
+  grid-area: left-colum;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.credit-card {
+  height: 100%;
+  width: 472px;
+  border-radius: 22px;
+  background: #3e92b6;
+  background: linear-gradient(90deg, #3e92b6 0%, #459cc4 50%, #2f7da7 100%);
+  transform: scale(1);
+}
+
+.credit-card__first-row {
+  height: 31%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.master-card-logo {
+  height:85%;
+}
+
+.credit-card__payment-system-logo {
+  margin-right: 9%;
+}
+
+.credit-card__second-row {
+  display: flex;
+  align-items: flex-start;
+  height: 20%;
+}
+
+.credit-card__bank-chip-image {
+  margin-left: 6.7%;
+}
+
+.credit-card__card-number,
+.credit-card__fourth-row {
+  margin: 0 9% 0 6.7%;
+  font-size: 200%;
+  /* font-size: 2.22vw; */
+  font-family: "Roboto";
+  font-weight: 300; 
+  letter-spacing: 3px;
+  color: var(--modal-bg);
+}
+
+.credit-card__card-number span {
+  width: 20.846%;
+  margin-right: 2.838%;
+}
+.credit-card__card-number span:last-child {
+  margin-right: 0;
+}
+
+.credit-card__fourth-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  font-size: 22px;
+}
+
+.payment-details__right-column {
+  grid-area: right-column;
+
+  font-family: "Roboto";
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-details__input-info {
+  display: grid;
+  grid-template-rows: 75px 295px auto;
+  grid-template-areas: 
+  "title"
+  "inputs"
+  "buttons";
+}
+
+.payment-details__title-wrapper {
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
+}
+.payment-details__title {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.payment-details__inputs-wrapper {
+  grid-area: inputs;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.payment-details__input-form {
+  position: relative;
+  color: #d3d3d3;
+  font-size: 20px;
+}
+
+.payment-details__label {
+  display: block;
+}
+
+.payment-details__inputs-wrapper input {
+  height: 52px;
+  border: none;
+  background-color: #f4f5f7;
+  outline: none;
+  position: relative;
+  width: 100%;
+  font-size: 26px;
+  line-height: 44px;
+}
+
+.payment-details__input-info input::placeholder {
+  line-height: 44px;
+  font-size: 26px;
+  color: #bbbbbb;
+}
+
+.payment-details__bottom-line {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  border-bottom: 2px solid #dfdfdf;
+
+  transition: border-bottom-color 0.2s ease-in-out;
+}
+
+.payment-details__input-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-details__valid-through-wrapper,
+.payment-details__cvv-wrapper {
+  width: 45%;
+}
+
+.payment-details__buttons-wrapper {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-details__next-page-button {
+  margin-top: 32px;
+}
+
+/* CONFIRMATION PAGE
+================================================================================================================================================= */
+ 
+.payment-modal__confirmation-page {
+  height: 100%;
+  width: 100%;
+  padding: 10vh 2.5vw;
+
+  display: grid;
+ 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 75px 295px auto;
+  grid-template-areas:
+  ".          right-column"
+  "left-colum right-column"
+  ".          right-column";
+}
+
+.confirmation-page__left-column {
+  grid-area: left-colum;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.confirmation-page__left-image {
+  height: 100%;
+  padding-right: 5vw;
+}
+
+.confirmation-page__right-column {
+  grid-area: right-column;
+
+  font-family: "Roboto";
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmation-page__input-info {
+  display: grid;
+  grid-template-rows: 75px 295px auto;
+  grid-template-areas: 
+  "title"
+  "inputs"
+  "buttons";
+}
+
+.confirmation-page__title-wrapper {
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmation-page__title {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.confirmation-page__inputs-wrapper {
+  grid-area: inputs;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.confirmation-page__input-form {
+  position: relative;
+  color: #d3d3d3;
+  font-size: 20px;
+}
+
+.confirmation-page__label {
+  display: block;
+  /* margin-top: 4px; */
+}
+
+.confirmation-page__input-info input {
+  height: 52px;
+  border: none;
+  background-color: #f4f5f7;
+  outline: none;
+  position: relative;
+  width: 100%;
+  font-size: 26px;
+  line-height: 44px;
+}
+
+.confirmation-page__input-info input::placeholder {
+  line-height: 44px;
+  font-size: 26px;
+  color: #bbbbbb;
+}
+
+.confirmation-page__bottom-line {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  border-bottom: 2px solid #dfdfdf;
+
+  transition: border-bottom-color 0.2s ease-in-out;
+}
+
+.confirmation-page__input-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirmation-page__customer-name-wrapper,
+.confirmation-page__customer-surname-wrapper {
+  width: 45%;
+}
+
+.confirmation-page__buttons-wrapper {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmation-page__pay-button {
+  margin-top: 32px;
+  padding: 12px 6px;
+  border-radius: 6px;
+
+  border: none;
+  background-color: #4E8EB2;
+
+  background: linear-gradient(90deg, rgba(48,129,172,1) 0%, rgb(65, 151, 190) 100%);
+  color: #ABD0E3;
+  font-size: 24px;
+  letter-spacing: 1px;
+
+  transition: background-color 0.2s ease-in-out;
+}
+
+.confirmation-page__pay-button:hover {
+  background-color: #447d9e;
+  cursor: pointer;
+}
+
+.confirmation-page__pay-button:active {
+  background-color: #3f7492;
+}
+
+.pay-button__total-sum {
+  color: #eaeaeb;
+  font-weight: 500;
+}
+
+/* NEXT STEP BUTTONS
+================================================================================================================================================= */
+ 
+.next-page-button {
+  text-decoration: none;
+  text-align: center;
+  
+  padding: 12px 32px;
+  border-radius: 6px;
+  border: none;
+
+  background-color: #4E8EB2;
+  background: linear-gradient(90deg, #3081ac 0%, #4197be 100%);
+  color: #ABD0E3;
+
+  font-size: 24px;
+  letter-spacing: 1px;
+
+  transform: scale(1);
+
+  transition: all 0.2s ease-in-out;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.next-page-button:hover {
+  background-color: #447d9e;
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.next-page-button:active {
+  background-color: #3f7492;
+  transform: scale(1.03);
+}
+
+.next-page-button__title {
+  color: #eaeaeb;
+  font-weight: 300;
+}
+
+.next-page-button_disabled {
+  cursor: default;
+  transform: scale(1);
+}
+
+.next-page-button_disabled:hover {
+  transform: scale(1);
+}
+
+/* PREVIOUS STEP BUTTONS
+================================================================================================================================================= */
+ 
+.previous-page-button {
+  text-decoration: none;
+  text-align: center;
+
+  padding: 12px 32px;
+  border-radius: 6px;
+  border: none;
+
+  
+  background: none;
+
+  font-size: 14px;
+  
+  transition: background-color 0.2s ease-in-out;
+}
+
+.previous-page-button:hover {
+  cursor: pointer;
+}
+
+.previous-page-button:active {
+}
+
+.previous-page-button__title {
+  color: #ABD0E3;
+  font-weight: 400;
+
+  transition: color 0.2s ease-in-out;
+}
+
+.previous-page-button__title:hover {
+  color: #5f99bb;
+}

@@ -6,6 +6,7 @@ export default class OrganizationsController {
 
   init() {
     this.view.init(this.model.organizationList);
+    this.subscribeEvents();
     this.bindEvents();
   }
 
@@ -14,9 +15,11 @@ export default class OrganizationsController {
 
     this.view.DOMElements.searchInput.addEventListener('input', this.searchOrganizations.bind(this));
 
-    this.view.DOMElements.deleteButtons.forEach(button => {
-      button.addEventListener('click', this.deleteOrganization.bind(this))
-    });
+    this.view.DOMElements.tableWrapper.addEventListener('click', this.view.clickOnTable.bind(this))
+  }
+
+  subscribeEvents() {
+    window.app.observer.subscribeEvent('clickOnDeleteOrganizationBtn', this.deleteOrganization.bind(this))
   }
 
   sortOrganizations(e) {
@@ -39,16 +42,15 @@ export default class OrganizationsController {
     this.view.searchOrganizations(e.currentTarget.value);
   }
 
-  async deleteOrganization(e) {
+  async deleteOrganization(button) {
     this.view.buildModal( { title : 'Вы уверены, что хотите удалить организацию?' } );
 
     this.view.DOMElements.modalFirstButton.addEventListener('click', this.clickOnFirstButton.bind(this));
-    await this.view.DOMElements.modalSecondButton.addEventListener('click', this.clickOnSecondButton.bind(this, e.currentTarget));
+    await this.view.DOMElements.modalSecondButton.addEventListener('click', this.clickOnSecondButton.bind(this, button));
   }
 
   clickOnFirstButton() {
     this.view.removeModal();
-    window.app.observer.callEvent('navigateTo', '/');
   }
 
   async clickOnSecondButton(...args) {

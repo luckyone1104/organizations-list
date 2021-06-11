@@ -1,8 +1,16 @@
-import View from './View.js'
+import View from '../View.js'
 
 export default class OrganizationConstructorView extends View {
   constructor() {
     super();
+  }
+
+  init() {
+    this.buildMenu();
+  }
+
+  buildMenu() {
+    document.querySelector('.aside-menu__menu').innerHTML = '';
   }
 
   getInputElements() {

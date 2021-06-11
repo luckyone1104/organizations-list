@@ -57,5 +57,13 @@ export default {
         <button type="button" class="create-organization-page__cancel-button btn btn-primary">Отмена</button>
         <button type="button" class="create-organization-page__save-button btn btn-success"><span>Сохранить</span></button>
       </div>
-    </div>`
+    </div>`,
+
+    '/organization-info/:id': 
+      `<div class="main-content__organization-info organization-info">
+      </div>`,
+
+    '/purchase/:id': `
+      <div class="main-content__purchase-modal-wrapper">
+      </div>`
 }

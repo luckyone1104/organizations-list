@@ -46,12 +46,13 @@ export default class CreationModeController {
     const inputs = this.view.DOMElements.inputs;
 
     return {
-      id : this.organizationId,
-      name: inputs.organizationName.value,
-      cardType : inputs.cardType.value,
+      id           : this.organizationId,
+      name         : inputs.organizationName.value,
+      cardType     : inputs.cardType.value,
       creationDate : firebase.firestore.Timestamp.fromDate(new Date(inputs.creationDate.value)),
-      status : inputs.organizationStatus.value,
-      cardCount : (Math.random() * (100 - 10) + 10).toFixed(0)
+      status       : inputs.organizationStatus.value === 'true' ? true : false,
+      cardCount    : (Math.random() * (100 - 10) + 10).toFixed(0),
+      isPurchased  : false
     };
   }
 

@@ -1,10 +1,10 @@
-import CreationModeView from '../views/organization-constructor-views/CreationModeView.js'
-import CreationModeController from './organization-constructor-controllers/CreationModeController.js'
+import CreationModeView from '../../views/organization-constructor-views/CreationModeView.js'
+import CreationModeController from './CreationModeController.js'
 
-import EditingModeView from '../views/organization-constructor-views/EditingModeView.js'
-import EditingModeController from './organization-constructor-controllers/EditingModeController.js'
+import EditingModeView from '../../views/organization-constructor-views/EditingModeView.js'
+import EditingModeController from './EditingModeController.js'
 
-export default class OrganizationInfoController {
+export default class OrganizationConstructorController {
   constructor(view, model) {
     this.view = view;
     this.model = model;
@@ -17,6 +17,8 @@ export default class OrganizationInfoController {
   }
 
   init(params) {
+    this.view.init();
+    
     if (params.action === 'create') this.creationModeController.init(+params.id);;
     if (params.action === 'edit') this.editingModeController.init(+params.id);
   }
