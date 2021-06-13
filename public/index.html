@@ -5,18 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Library Blocks -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/css/blocks/payment-modal/autocomplete/autoComplete.02.css">
+  <link rel="stylesheet" href="/static/blocks/library-blocks/autocomplete/css/auto-complete.css">
 
+  <!-- Common Styles -->
   <link rel="stylesheet" href="/static/css/null.css">
-  <link rel="stylesheet" href="/static/css/blocks/buttons.css">
-
   <link rel="stylesheet" href="/static/css/index.css">
-  <link rel="stylesheet" href="/static/css/organizations-page.css">
-  <link rel="stylesheet" href="/static/css/create-organization-page.css">
-  <link rel="stylesheet" href="/static/css/organization-info.css">
-  
-  <link rel="stylesheet" href="/static/css/blocks/payment-modal/payment-modal.css">
+
+  <!-- Project Blocks -->
+  <link rel="stylesheet" href="/static/blocks/project-blocks/pages/org-constructor/css/create-organization-page.css">
+  <link rel="stylesheet" href="/static/blocks/project-blocks/pages/org-info/css/organization-info.css">
+  <link rel="stylesheet" href="/static/blocks/project-blocks/pages/org-list/css/organizations-page.css">
+  <link rel="stylesheet" href="/static/blocks/project-blocks/other/org-purchase-modal/css/payment-modal.css">
+  <link rel="stylesheet" href="/static/blocks/project-blocks/other/buttons/buttons.css">
 
   <title></title>
 </head>
@@ -24,7 +26,7 @@
   <div class="page-wrapper">
     <aside class="page-wrapper__aside-menu aside-menu">
       <div class="aside-menu__logo-wrapper">
-        <img class="aside-menu__logo" src="/static/images/cards.svg" alt="" width="62px">
+        <img class="aside-menu__logo" src="/static/blocks/project-blocks/pages/org-list/images/cards.svg" alt="" width="62px">
         <div class="aside-menu__text-logo">
           <div>Clients</div>
           <div>Cards</div>
@@ -34,25 +36,25 @@
       <div class="aside-menu__menu"></div>
 
       <div class="aside-menu__settings">
-        <img src="/static/images/settings.svg" alt="" height="12px" width="12px">
-        <span>Настройки</span>
+        <img src="/static/blocks/project-blocks/pages/org-list/images/settings.svg" alt="" height="12px" width="12px">
+        <span>Settings</span>
       </div>
 
       <div class="aside-menu__hide-button">
-        <img src="/static/images/menu.svg" alt="" height="38px" width="38px">
-        <span>Спрятать меню</span>
+        <img src="/static/blocks/project-blocks/pages/org-list/images/menu.svg" alt="" height="38px" width="38px">
+        <span>Hide menu</span>
       </div>
     </aside>
 
     <header class="page-wrapper__top-bar top-bar">
-      <span class="top-bar__user-name">Владимир</span>
-      <img src="/static/images/person-icon.svg" alt="" height="30.4px" width="30.4px">
+      <span class="top-bar__user-name">Username</span>
+      <img src="/static/blocks/project-blocks/pages/org-list/images/person-icon.svg" alt="" height="30.4px" width="30.4px">
     </header>
 
     <div class="page-wrapper__router router default-cursor noselect">
-      <span class="page-wrapper__home-route" data-link="/">Главная</span>
+      <span class="page-wrapper__home-route" data-link="/">Main</span>
       <span>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;</span>
-      <span class="router__current-page">Организации</span>
+      <span class="router__current-page">Organizations</span>
     </div>
 
     <main class="page-wrapper__main-content main-content">
@@ -65,12 +67,14 @@
       </div>
     </main>
   </div>
+
+  <div id="modal-wrapper"></div>
   
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <script src="/static/js/utils/autoComplete.js"></script>
+  <script src="/static/blocks/library-blocks/autocomplete/js/auto-complete.js"></script>
   <script type="module" src="/static/js/index.js"></script>
 </body>
 </html>

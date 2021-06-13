@@ -1,15 +1,17 @@
-import Router from './utils/Router.js'
-import observer from './utils/observer.js'
+import Router from './router/Router.js'
+import observer from './helpers/observer.js'
+import asyncObserver from './helpers/async-observer.js'
 
-import Model from './models/Model.js'
-import View from './views/View.js'
-import Controller from './controllers/Controller.js'
+import Model from './mvc/Model.js'
+import View from './mvc/View.js'
+import Controller from './mvc/Controller.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   const router = new Router();
 
   window.app = window.app || {};
   window.app.observer = observer;
+  window.app.asyncObserver = asyncObserver;
 
   const model = new Model();
   const view = new View();

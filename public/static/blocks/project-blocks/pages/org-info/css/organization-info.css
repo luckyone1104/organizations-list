@@ -1,0 +1,89 @@
+.organization-info_locked {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.organization-info__button {
+  margin-top: 32px;
+  width: 246px;
+}
+
+.organization-info_unlocked {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.organization-info__card-section {
+  margin: 0 12px;
+  margin-bottom: 32px;
+}
+
+.card-section {
+  width: 380px;
+  height: 180px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.card-section__title {
+  font-weight: bold;
+  padding: 0 14px;
+  background: #e0e0e0;
+  border-radius: 10px 10px 0 0;
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-section__text {
+  margin-top: 8px;
+  padding: 0 14px;
+}
+
+.menu__wrapper {
+  margin: 30.4px 20.4px;
+}
+
+.menu__organization-select {
+  color: #4f8db2;
+  border-color: #b7cad6;
+}
+
+.menu__list {
+  margin-top: 16px !important;
+  color: #9b9c9e;
+  fill: #9b9c9e;
+}
+
+.menu__item {
+  margin-bottom: 12px;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.menu__item:hover {
+  cursor: pointer;
+  color: #4E8EB2;
+  fill: #4E8EB2;
+}
+
+.menu__item_selected {
+  color: #4E8EB2;
+  fill: #4E8EB2;
+}
+
+.menu__list svg {
+  margin-right: 3px;
+}
+
+.menu__item[disabled] {
+  color: #9b9c9e;
+  fill: #9b9c9e;
+  cursor: default;
+}
